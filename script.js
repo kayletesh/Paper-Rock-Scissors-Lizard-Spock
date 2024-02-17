@@ -1,9 +1,9 @@
 // get the computer's choice.
 function getComputerSelection() {
   // create an array for the choices.
-  const selection = [paper, rock, scissors, lizard, Spock];
+  const selection = ["paper", "rock", "scissors", "lizard", "spock"];
   // set randomizer for the choices.
-  const randomselection = math.floor(Math.random() * 5);
+  const randomSelection = math.floor(Math.random() * 5);
   // return the choice.
   return selection[randomSelection];
 }
