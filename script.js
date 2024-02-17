@@ -1,19 +1,88 @@
 // get the computer's choice.
 function getComputerSelection() {
-    const selection [paper, rock, scissors, lizard, Spock];
-    const randomselection = math.floor(Math.random() *5);
-    return selection[randomSelection];
+  // create an array for the choices.
+  const selection = [paper, rock, scissors, lizard, Spock];
+  // set randomizer for the choices.
+  const randomselection = math.floor(Math.random() * 5);
+  // return the choice.
+  return selection[randomSelection];
 }
-// create an array for the choices.
-// set randomizer for the choices.
-// return the choice.
 
 // get player choice
-// create a prompt to grab the player's choice and begin the game.
-// set player's choice to lowercase.
-//return choice.
+function getPlayerSelection(currentRound) {
+  // define player's selection
+  let playerSelection;
+  // create a prompt to grab the player's choice and begin the game.
+  playerSelection = prompt(
+    `Round ${currentRound} FIGHT! Pick one: Paper, Rock, Scissors, Lizard, or Spock!`
+  );
+  // set player's choice to lowercase.
+  playerSelection = playerselection.toLowerCase();
+  //return choice.
+  return playerSelection;
+}
 
 // create the function that will run the game, and house all results.
+
+function playGame(playerSelection, computerSelection) {
+  // tie statement
+  if (playerSelection === computerSelection) {
+    return `Computer Chose: ${computerSelection}, IT'S A TIE!`;
+    // player selects paper:
+  } else if ((playerSelection === "paper", computerSelection === "rock")) {
+    return `Computer Chose: ${computerSelection}, Paper Covers Rock... YOU WIN!!!`;
+  } else if ((playerSelection === "paper", computerSelection === "scissors")) {
+    return `Computer Chose: ${computerSelection}, Scissors Cuts Paper... You Lose...`;
+  } else if ((playerSelection === "paper", computerSelection === "lizard")) {
+    return `Computer Chose ${computerSelection}, Lizard Eats Paper... You Lose...`;
+  } else if ((playerSelection === "paper", computerSelection === "spock")) {
+    return `Computer Chose ${computerSelection}, Papers Disprove Spock... YOU WIN!!!`;
+  }
+  //player selects rock
+  else if ((playerSelection === "rock", computerSelection === "scissors")) {
+    return `Computer Chose: ${computerSelection}, Rock Breaks Scissors... YOU WIN!!!`;
+  } else if ((playerSelection === "rock", computerSelection === "lizard")) {
+    return `Computer Chose: ${computerSelection}, Rock Crushes Lizard... YOU WIN!!!`;
+  } else if ((playerSelection === "rock", computerSelection === "spock")) {
+    return `Computer Chose ${computerSelection}, Spock Vaporizes Rock... You Lose...`;
+  } else if ((playerSelection === "rock", computerSelection === "paper")) {
+    return `Computer Chose ${computerSelection}, Paper Covers Rock... You Lose...`;
+  }
+  //player selects scissors
+  else if ((playerSelection === "scissors", computerSelection === "lizard")) {
+    return `Computer Chose: ${computerSelection}, Scissors Decapitate Lizard... YOU WIN!!!`;
+  } else if ((playerSelection === "scissors", computerSelection === "spock")) {
+    return `Computer Chose: ${computerSelection}, Spock Smashes Scissors... You Lose...`;
+  } else if ((playerSelection === "scissors", computerSelection === "paper")) {
+    return `Computer Chose: ${computerSelection}, Scissors Cut Paper... YOU WIN!!!`;
+  } else if ((playerSelection === "scissors", computerSelection === "rock")) {
+    return `Computer Chose: ${computerSelection}, Rock Breaks Scissors... You Lose...`;
+  }
+  //player selects lizard
+  else if ((playerSelection === "lizard", computerSelection === "spock")) {
+    return `Computer Chose: ${computerSelection}, Lizard Poisons Spock... YOU WIN!!!`;
+  } else if ((playerSelection === "lizard", computerSelection === "paper")) {
+    return `Computer Chose: ${computerSelection}, Lizard Eats Paper... YOU WIN!!!`;
+  } else if ((playerSelection === "lizard", computerSelection === "rock")) {
+    return `Computer Chose: ${computerSelection}, Rock Crushes Lizard... You Lose...`;
+  } else if ((playerSelection === "lizard", computerSelection === "scissors")) {
+    return `Computer Chose: ${computerSelection}, Scissors Decapitate Lizard... You Lose...`;
+  }
+  //player selects spock
+  else if ((playerSelection === "spock", computerSelection === "paper")) {
+    return `Computer Chose: ${computerSelection}, Papers Disprove Spock... You Lose...`;
+  } else if ((playerSelection === "spock", computerSelection === "rock")) {
+    return `Computer Chose: ${computerSelection}, Spock Vaporizes Rock... YOU WIN!!!`;
+  } else if ((playerSelection === "spock", computerSelection === "scissors")) {
+    return `Computer Chose: ${computerSelection}, Spock Smashes Scissors... YOU WIN!!!`;
+  } else if ((playerSelection === "spock", computerSelection === "lizard")) {
+    return `Computer Chose: ${computerSelection}, Lizard Poisons Spock... You Lose...`;
+  } else {
+    //error result
+    return "ERROR: Please select either Paper, Rock, Scissors, Lizard, or Spock.";
+  }
+}
+
 // function should return the result of each matchup.
 
 //set the loop for 10 rounds.
