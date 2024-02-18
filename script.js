@@ -18,6 +18,7 @@ function getPlayerSelection(currentRound) {
   );
   // set player's choice to lowercase.
   playerSelection = playerSelection.toLowerCase();
+
   //return choice.
   return playerSelection;
 }
@@ -77,6 +78,9 @@ function playGame(playerSelection, computerSelection) {
     return `Computer Chose: ${computerSelection}, Spock Smashes Scissors... YOU WIN!!!`;
   } else if (playerSelection === "spock" && computerSelection === "lizard") {
     return `Computer Chose: ${computerSelection}, Lizard Poisons Spock... You Lose...`;
+  } else if (playerSelection === "borg") {
+    // secret ending
+    return "Borg";
   } else {
     //error result
     return "ERROR: Please select either Paper, Rock, Scissors, Lizard, or Spock.";
@@ -85,6 +89,15 @@ function playGame(playerSelection, computerSelection) {
 
 // function should return the result of each matchup.
 
+//create a function to trigger after final round, called Game Over.
+function gameOver(finalPlayerScore, finalComputerScore) {
+  if (playerScore > computerScore) {
+    return "YOU WIN!!!!";
+  } else if (playerScore < computerScore) {
+    return "YOU LOSE...";
+  }
+}
+
 //set the loop for 10 rounds.
 //this function will also hold the method to modify the score each round.
 //define values to set player score and computer score to 0 at the start of game.
@@ -92,22 +105,51 @@ let playerScore = 0;
 let computerScore = 0;
 //create a for loop.
 // define current round, up to-round, and increment value in the for loop.
-for (currentRound = 1; currentRound < 10; currentRound++) {
+for (currentRound = 1; currentRound <= 10; currentRound++) {
   //define computer choice and the player choice(set this one's () to current round)
   const playerSelection = getPlayerSelection(currentRound);
   const computerSelection = getComputerSelection();
   // define result as the function that plays the game.
   const result = playGame(playerSelection, computerSelection);
-  console.log(result);
+  // console.log the result, as well as a message to show each round.
+  //   console.log(result);
+  // create an if statement inside the for loop to collect score data. set result.includes to gather the data desired. method in this function should be the incrementation of the score.
+  if (result.includes("WIN")) {
+    playerScore++;
+    console.log(`Round ${currentRound}... ${result}`);
+  } else if (result.includes("Lose")) {
+    computerScore++;
+    console.log(`Round ${currentRound}... ${result}`);
+  } else if (result.includes("ERROR")) {
+    currentRound--;
+    console.log(
+      `ERROR!! Resetting Round... Please Choose Either Paper, Rock, Scissors, Lizard, or Spock!`
+    );
+  } else if (result.includes("Borg")) {
+    currentRound = 99;
+  }
+  // console.log current comp and player scores.
+  console.log(
+    `Computer Score = ${computerScore}, Player Score = ${playerScore}`
+  );
+  // alert the results.
+
+  if (currentRound === 99) {
+    alert(
+      "The Borg Defeats all! GAME OVER!!! You Have Been Absorbed Into The Hive Mind!"
+    );
+  } else if (currentRound === 10) {
+    alert(
+      `GAME OVER!! You scored ${playerScore}, computer scored ${computerScore}... ${gameOver(
+        playerScore,
+        computerScore
+      )}! Refresh the page to play again!`
+    );
+  } else {
+    alert(result);
+  }
 }
 
-// console.log the result, as well as a message to show each round.
-// create an if statement inside the for loop to collect score data. set result.includes to gather the data desired. method in this function should be the incrementation of the score.
-// console.log current comp and player scores.
-// alert the results.
-//END FOR LOOP CODE
-
-//create a function to trigger after final round, called Game Over.
 //set parameters to final player score, and final comp score.
 //function should be an if statement.
 //set final win/lose condition.
